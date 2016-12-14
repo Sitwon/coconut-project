@@ -1,0 +1,19 @@
+# This file defines pattern rules for compiling coconut source files.
+# Include it in your Makefile to take advantage of these pattern rules.
+
+COCONUT ?= coconut
+COCOFLAGS ?=
+# Possibly useful flags:
+# --line-numbers: add line number comments for ease of debugging
+# --keep-lines: include source code in comments for ease of debugging
+# --minify: compress compiled python
+# --jobs <num>: number of additional processes to use (defaults to 0) (pass 'sys' to use machine default)
+
+%.py : %.coc
+	$(COCONUT) $(COCOFLAGS) $<
+
+%.py : %.coco
+	$(COCONUT) $(COCOFLAGS) $<
+
+%.py : %.coconut
+	$(COCONUT) $(COCOFLAGS) $<
